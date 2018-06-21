@@ -9,18 +9,20 @@
     "email": "",
     "url": ""
   },
-  "keywords": [""],
-  "files": ["lib"],
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf lib && rimraf coverage",
-    "format":
-      "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
+    "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepare": "npm run build",
-    "prebuild":
-      "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty && webpack",
     "dev": "webpack-dev-server --progress --open-page dist/",
     "demo": "npm run build && http-server dist -o",
@@ -60,8 +62,14 @@
       ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": ["ts", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
     "testEnvironment": "node",
     "mapCoverage": true
+  },
+  "peerDependencies": {
+    "react-vis": "^1.9.4"
   }
 }
