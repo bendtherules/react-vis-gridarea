@@ -1,16 +1,17 @@
 {
   "name": "react-vis-gridarea",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "react-vis-gridarea",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/bendtherules/react-vis-gridarea",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "Abhas Bhattacharya",
+    "email": "abhasbhattacharya2@gmail.com",
+    "url": "https://github.com/bendtherules/react-vis-gridarea"
   },
   "keywords": [
-    ""
+    "react-vis",
+    "grid-area"
   ],
   "files": [
     "lib"
