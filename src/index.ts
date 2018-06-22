@@ -1,5 +1,5 @@
-import { Greeter } from './greeter';
-export * from './greeter';
+import GridArea from './grid-area';
+export default GridArea;
 
 // tslint:disable-next-line:only-arrow-functions
 (function(currentWindow: Window) {
@@ -8,10 +8,10 @@ export * from './greeter';
   // tslint:disable-next-line:no-console
   console.log('hello world');
 
-  // assign Greeter to global
+  // assign GridArea to global
   const myWindow = currentWindow as any;
-  myWindow.Greeter = Greeter;
-  // we can use Greeter , execute following in console
-  // var greet = new Greeter('myName');
+  myWindow.GridArea = GridArea;
+  // we can use GridArea , execute following in console
+  // var greet = new GridArea('myName');
   // greet.greet();
 })(window);
