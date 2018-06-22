@@ -47,11 +47,11 @@ const GridAreaPropTypes = {
 };
 
 class GridArea extends PureComponent<GridAreaProps, {}> {
-  displayName = 'GridArea';
-  propTypes = GridAreaPropTypes;
-  defaultProps = {};
+  static displayName = 'GridArea';
+  static propTypes = GridAreaPropTypes;
+  static defaultProps = {};
 
-  requiresSVG = true;
+  static requiresSVG = true;
 
   render() {
     const {
@@ -67,7 +67,13 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
     const tickYAttr = isVertical ? 'x' : 'y';
     const length = isVertical ? height : width;
 
-    const scale = getAttributeScale(this.props, 'y');
+    const scale = getAttributeScale({
+      ...this.props,
+      width,
+      height,
+      top,
+      left
+    }, 'y');
     const values = [[4, 5.76], [8.5, 11.25]];
 
     return (
