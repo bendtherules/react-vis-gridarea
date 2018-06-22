@@ -1,7 +1,7 @@
 {
   "name": "react-vis-gridarea",
   "version": "0.0.1",
-  "description": "react-vis-gridarea",
+  "description": "Grid Area in react-vis charts",
   "license": "MIT",
   "repository": "https://github.com/bendtherules/react-vis-gridarea",
   "author": {
