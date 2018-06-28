@@ -9,31 +9,39 @@ import {
 const {
   getTicksTotalFromSize,
   getTickValues,
-  DIRECTION
 } = AxisUtils;
 
 const { getAttributeScale } = ScaleUtils;
 
-const { VERTICAL, HORIZONTAL } = DIRECTION;
+enum Direction {
+  VERTICAL = 'vertical',
+  HORIZONTAL = 'horizontal'
+};
+
+type NumberOrString = number | string;
 
 interface GridAreaProps {
+  direction: Direction;
+  highlightRegion: Array<[NumberOrString, NumberOrString]>;
+
+  style: {
+    [styleName: string]: any;
+  }
+
+  // generally supplied by xyplot
   marginTop: number;
   marginBottom: number;
   marginLeft: number;
   marginRight: number;
   innerWidth: number;
   innerHeight: number;
-
-  style: {
-    [styleName: string]: any;
-  }
 }
 
 const GridAreaPropTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  top: PropTypes.number,
-  left: PropTypes.number,
+  direction: PropTypes.oneOf([Direction.VERTICAL, Direction.HORIZONTAL]),
+  highlightRegion: PropTypes.arrayOf(PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  )),
 
   style: PropTypes.object,
 
@@ -49,7 +57,9 @@ const GridAreaPropTypes = {
 class GridArea extends PureComponent<GridAreaProps, {}> {
   static displayName = 'GridArea';
   static propTypes = GridAreaPropTypes;
-  static defaultProps = {};
+  static defaultProps = {
+    direction:Direction.VERTICAL
+  };
 
   static requiresSVG = true;
 
@@ -62,7 +72,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
       style
     } = this.props;
 
-    const isVertical = true;
+    const isVertical = (this.props.direction === Direction.VERTICAL);
     const tickXAttr = isVertical ? 'y' : 'x';
     const tickYAttr = isVertical ? 'x' : 'y';
     const length = isVertical ? height : width;
@@ -74,7 +84,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
       top,
       left
     }, 'y');
-    const values = [[4, 5.76], [8.5, 11.25]];
+    const values = this.props.highlightRegion;
 
     return (
       <g
@@ -82,7 +92,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
         className="rv-xy-plot__grid-areas"
       >
         {values.map((v, i) => {
-          const pos = [];
+          const pos: number[] = [];
           pos[0] = scale(v[0]);
           pos[1] = scale(v[1]);
 
