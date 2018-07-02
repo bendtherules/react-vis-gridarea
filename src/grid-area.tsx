@@ -77,7 +77,8 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
 
     const style = {...GridArea.defaultStyle, ...this.props.style}; 
 
-    const isVertical = (this.props.direction === Direction.VERTICAL);
+    const axisDirection = (this.props.direction === Direction.VERTICAL ? Direction.HORIZONTAL : Direction.VERTICAL);
+    const isVertical = (axisDirection === Direction.VERTICAL);
 
     const primaryAxisName = isVertical ? 'y' : 'x';
     const crossAxisName = isVertical ? 'x' : 'y';
@@ -115,7 +116,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
             [primaryAxisName]: minPos,
             [primaryLengthAttr]: maxPos - minPos,
           };
-          
+
           return (
             <rect
               {...rectProps}

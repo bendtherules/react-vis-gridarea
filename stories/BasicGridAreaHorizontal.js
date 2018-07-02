@@ -24,7 +24,7 @@ export default class BasicChartWithGridArea extends React.Component {
         <HorizontalGridLines />
         <VerticalGridLines />
         <GridArea 
-        direction={'vertical'} 
+        direction={'horizontal'} 
         style={{fill:"rgba(0,255,0,0.4)"}}
         highlightRegion={[[4, 5.76], [8.5, 11.25]]}
         />
