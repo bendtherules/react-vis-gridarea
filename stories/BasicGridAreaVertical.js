@@ -25,7 +25,7 @@ export default class BasicChartWithGridArea extends React.Component {
         <VerticalGridLines />
         <GridArea 
         direction={'vertical'} 
-        style={{fill:"rgba(0,255,0,0.4)"}}
+        style={{fill:"rgba(0,255,255,0.4)"}}
         highlightRegion={[[timestamp + MSEC_DAILY*2, timestamp + MSEC_DAILY*3]]}
         />
 
