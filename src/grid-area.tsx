@@ -78,9 +78,14 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
     const style = {...GridArea.defaultStyle, ...this.props.style}; 
 
     const isVertical = (this.props.direction === Direction.VERTICAL);
-    const tickXAttr = isVertical ? 'y' : 'x';
-    const tickYAttr = isVertical ? 'x' : 'y';
-    const length = isVertical ? height : width;
+
+    const primaryAxisName = isVertical ? 'y' : 'x';
+    const crossAxisName = isVertical ? 'x' : 'y';
+    const primaryLengthAttr = isVertical ? 'height' : 'width';
+    const crossLengthAttr = isVertical ? 'width' : 'height';
+    const primaryLength = isVertical ? height : width;
+    const crossLength = isVertical ? width : height;
+    
 
     const scale = getAttributeScale({
       ...this.props,
@@ -88,7 +93,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
       height,
       top,
       left
-    }, 'y');
+    }, primaryAxisName);
     const values = this.props.highlightRegion;
 
     return (
@@ -105,11 +110,12 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
           const maxPos = Math.max(...pos);
 
           const rectProps = {
-            x: 0,
-            width: width,
-            y: minPos,
-            height: maxPos - minPos,
+            [crossAxisName]: 0,
+            [crossLengthAttr]: crossLength,
+            [primaryAxisName]: minPos,
+            [primaryLengthAttr]: maxPos - minPos,
           };
+          debugger;
           return (
             <rect
               {...rectProps}
