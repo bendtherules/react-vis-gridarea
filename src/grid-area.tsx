@@ -135,8 +135,8 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
             [primaryAxisName]: minPos,
             [primaryLengthAttr]: maxPos - minPos,
           };
-
-          const tmpRect = (
+          
+          return (
             <rect
               {...rectProps}
               key={i}
@@ -146,10 +146,6 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
               onMouseOver={(ev) => { this.props.onValueMouseOver(ev, tmpValue) }}
               onMouseOut={(ev) => { this.props.onValueMouseOut(ev, tmpValue) }}
             />
-          );
-
-          return (
-            
           );
         })}
       </g>
