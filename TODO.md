@@ -1,5 +1,5 @@
 - [X] Support styles with default style
-- [ ] Support setting both horizontal and vertical gridareas
+- [X] Support setting both horizontal and vertical gridareas
 - [ ] Support events
 - [ ] Remove unwanted sample ts files
 - [ ] Add more stories / samples
