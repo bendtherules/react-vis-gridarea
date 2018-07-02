@@ -13,7 +13,7 @@ import '../node_modules/react-vis/dist/style.css';
 
 const MSEC_DAILY = 86400000;
 
-export default class BasicChartWithGrid extends React.Component {
+export default class BasicChartWithGridArea extends React.Component {
   render() {
     const timestamp = new Date('September 9 2017').getTime();
     return (
