@@ -12,6 +12,6 @@ import ChartWithGridAreaDefaultColor from './GridAreaWithDefaultStyle';
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Grid area', module)
-  .add('Basic Horizontal', () => <ChartWithGridAreaHorizontal onClick={action('clicked')} />)
-  .add('Basic Vertical', () => <ChartWithGridAreaVertical onClick={action('clicked')} />)
-  .add('With default style', () => <ChartWithGridAreaDefaultColor onClick={action('clicked')} />)
+  .add('Basic Horizontal', () => <ChartWithGridAreaHorizontal />)
+  .add('Basic Vertical', () => <ChartWithGridAreaVertical />)
+  .add('With default style', () => <ChartWithGridAreaDefaultColor />)
