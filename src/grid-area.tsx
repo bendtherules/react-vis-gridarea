@@ -115,7 +115,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
             [primaryAxisName]: minPos,
             [primaryLengthAttr]: maxPos - minPos,
           };
-          debugger;
+          
           return (
             <rect
               {...rectProps}
