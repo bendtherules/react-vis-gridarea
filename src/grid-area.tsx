@@ -63,14 +63,19 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
 
   static requiresSVG = true;
 
+  static defaultStyle = {
+    fill: 'rgba(0,0,0,0.25)'
+  }
+
   render() {
     const {
       innerWidth: width,
       innerHeight: height,
       marginTop: top,
       marginLeft: left,
-      style
     } = this.props;
+
+    const style = {...GridArea.defaultStyle, ...this.props.style}; 
 
     const isVertical = (this.props.direction === Direction.VERTICAL);
     const tickXAttr = isVertical ? 'y' : 'x';

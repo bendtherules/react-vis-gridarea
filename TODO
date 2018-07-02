@@ -1,4 +1,4 @@
-1. Support styles and colors
+1. [X] Support styles with default style
 2. Support setting both horizontal and vertical gridareas
 3. Support events
 4. Remove unwanted sample ts files
