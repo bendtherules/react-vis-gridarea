@@ -5,7 +5,8 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import ChartWithGrid from './ChartWithGridArea';
+import ChartWithGridAreaHorizontal from './BasicGridAreaHorizontal';
+import ChartWithGridAreaVertical from './BasicGridAreaVertical';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -19,6 +20,7 @@ storiesOf('Button', module)
     </Button>
   ));
 
-storiesOf('Grid', module)
-  .add('basic', () => <ChartWithGrid onClick={action('clicked')} />)
+storiesOf('Grid area', module)
+  .add('Basic Horizontal', () => <ChartWithGridAreaHorizontal onClick={action('clicked')} />)
+  .add('Basic Vertical', () => <ChartWithGridAreaVertical onClick={action('clicked')} />)
 
