@@ -28,6 +28,14 @@ interface GridAreaProps {
     [styleName: string]: any;
   }
 
+  // event listeners
+  onValueMouseOver: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onValueMouseOut: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onValueClick: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onSeriesMouseOver: (ev: React.MouseEvent<SVGElement>) => void,
+  onSeriesMouseOut: (ev: React.MouseEvent<SVGElement>) => void,
+  onSeriesClick: (ev: React.MouseEvent<SVGElement>) => void,
+
   // generally supplied by xyplot
   marginTop: number;
   marginBottom: number;
@@ -45,6 +53,14 @@ const GridAreaPropTypes = {
 
   style: PropTypes.object,
 
+  // event listeners
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func,
+  onValueClick: PropTypes.func,
+  onSeriesMouseOver: PropTypes.func,
+  onSeriesMouseOut: PropTypes.func,
+  onSeriesClick: PropTypes.func,
+
   // generally supplied by xyplot
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
@@ -58,7 +74,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
   static displayName = 'GridArea';
   static propTypes = GridAreaPropTypes;
   static defaultProps = {
-    direction:Direction.VERTICAL
+    direction: Direction.VERTICAL
   };
 
   static requiresSVG = true;
@@ -75,7 +91,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
       marginLeft: left,
     } = this.props;
 
-    const style = {...GridArea.defaultStyle, ...this.props.style}; 
+    const style = { ...GridArea.defaultStyle, ...this.props.style };
 
     const axisDirection = (this.props.direction === Direction.VERTICAL ? Direction.HORIZONTAL : Direction.VERTICAL);
     const isVertical = (axisDirection === Direction.VERTICAL);
@@ -86,7 +102,7 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
     const crossLengthAttr = isVertical ? 'width' : 'height';
     const primaryLength = isVertical ? height : width;
     const crossLength = isVertical ? width : height;
-    
+
 
     const scale = getAttributeScale({
       ...this.props,
@@ -101,11 +117,14 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
       <g
         transform={`translate(${left},${top})`}
         className="rv-xy-plot__grid-areas"
+        onClick={this.props.onSeriesClick}
+        onMouseOver={this.props.onSeriesMouseOver}
+        onMouseOut={this.props.onSeriesMouseOut}
       >
-        {values.map((v, i) => {
+        {values.map((tmpValue, i) => {
           const pos: number[] = [];
-          pos[0] = scale(v[0]);
-          pos[1] = scale(v[1]);
+          pos[0] = scale(tmpValue[0]);
+          pos[1] = scale(tmpValue[1]);
 
           const minPos = Math.min(...pos);
           const maxPos = Math.max(...pos);
@@ -117,13 +136,20 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
             [primaryLengthAttr]: maxPos - minPos,
           };
 
-          return (
+          const tmpRect = (
             <rect
               {...rectProps}
               key={i}
               className="rv-xy-plot__grid-area__rect"
               style={style}
+              onClick={(ev) => { this.props.onValueClick(ev, tmpValue) }}
+              onMouseOver={(ev) => { this.props.onValueMouseOver(ev, tmpValue) }}
+              onMouseOut={(ev) => { this.props.onValueMouseOut(ev, tmpValue) }}
             />
+          );
+
+          return (
+            
           );
         })}
       </g>
