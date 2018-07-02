@@ -29,12 +29,12 @@ interface GridAreaProps {
   }
 
   // event listeners
-  onValueMouseOver: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
-  onValueMouseOut: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
-  onValueClick: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
-  onSeriesMouseOver: (ev: React.MouseEvent<SVGElement>) => void,
-  onSeriesMouseOut: (ev: React.MouseEvent<SVGElement>) => void,
-  onSeriesClick: (ev: React.MouseEvent<SVGElement>) => void,
+  onValueMouseOver?: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onValueMouseOut?: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onValueClick?: (ev: React.MouseEvent<SVGElement>, value: [NumberOrString, NumberOrString]) => void,
+  onSeriesMouseOver?: (ev: React.MouseEvent<SVGElement>) => void,
+  onSeriesMouseOut?: (ev: React.MouseEvent<SVGElement>) => void,
+  onSeriesClick?: (ev: React.MouseEvent<SVGElement>) => void,
 
   // generally supplied by xyplot
   marginTop: number;
@@ -135,16 +135,16 @@ class GridArea extends PureComponent<GridAreaProps, {}> {
             [primaryAxisName]: minPos,
             [primaryLengthAttr]: maxPos - minPos,
           };
-          
+
           return (
             <rect
               {...rectProps}
               key={i}
               className="rv-xy-plot__grid-area__rect"
               style={style}
-              onClick={(ev) => { this.props.onValueClick(ev, tmpValue) }}
-              onMouseOver={(ev) => { this.props.onValueMouseOver(ev, tmpValue) }}
-              onMouseOut={(ev) => { this.props.onValueMouseOut(ev, tmpValue) }}
+              onClick={(ev) => { this.props.onValueClick && this.props.onValueClick(ev, tmpValue) }}
+              onMouseOver={(ev) => { this.props.onValueMouseOver && this.props.onValueMouseOver(ev, tmpValue) }}
+              onMouseOut={(ev) => { this.props.onValueMouseOut && this.props.onValueMouseOut(ev, tmpValue) }}
             />
           );
         })}
