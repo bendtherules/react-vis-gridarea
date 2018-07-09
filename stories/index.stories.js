@@ -11,6 +11,7 @@ import GridAreaWithDefaultStyle from './GridAreaWithDefaultStyle';
 import GridAreaWithSeriesEventListeners from './GridAreaWithSeriesEventListeners';
 import GridAreaWithValueEventListeners from './GridAreaWithValueEventListeners';
 import GridAreaWithPopupOnValueHover from './GridAreaWithPopupOnValueHover';
+import GridAreaWithPopupOnValueClick from './GridAreaWithPopupOnValueClick';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -21,4 +22,4 @@ storiesOf('Grid area', module)
   .add('With series event handler', () => <GridAreaWithSeriesEventListeners />)
   .add('With value event handler', () => <GridAreaWithValueEventListeners />)
   .add('With value event hover tooltip', () => <GridAreaWithPopupOnValueHover />)
-
+  .add('With value event click tooltip', () => <GridAreaWithPopupOnValueClick />)
