@@ -25,6 +25,7 @@ export default class GridAreaWithSeriesEvt extends React.Component {
         <VerticalGridLines />
         <GridArea
           direction={'horizontal'}
+          style={{fill:"rgba(0,255,0,0.4)"}}
           highlightRegion={[[4, 5.76], [8.5, 11.25]]}
           onSeriesClick={() => console.log('Clicked on series')}
           onSeriesMouseOver={() => console.log('Mouse over on series')}
