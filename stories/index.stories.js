@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
 import BasicGridAreaHorizontal from './BasicGridAreaHorizontal';
 import BasicGridAreaVertical from './BasicGridAreaVertical';
 import GridAreaWithDefaultStyle from './GridAreaWithDefaultStyle';
@@ -12,8 +11,6 @@ import GridAreaWithSeriesEventListeners from './GridAreaWithSeriesEventListeners
 import GridAreaWithValueEventListeners from './GridAreaWithValueEventListeners';
 import GridAreaWithPopupOnValueHover from './GridAreaWithPopupOnValueHover';
 import GridAreaWithPopupOnValueClick from './GridAreaWithPopupOnValueClick';
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Grid area', module)
   .add('Basic Horizontal', () => <BasicGridAreaHorizontal />)
