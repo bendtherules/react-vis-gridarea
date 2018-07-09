@@ -36,3 +36,5 @@ class TestChart extends React.Component {
 ```
 
 Looks like this:
+
+![Basic usage screenshot](https://i.imgur.com/WyrcEMm.png)
