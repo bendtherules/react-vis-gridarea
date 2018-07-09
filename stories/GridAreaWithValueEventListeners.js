@@ -35,15 +35,16 @@ export default class BasicChartWithGridArea extends React.Component {
         <YAxis title="Y Axis" />
 
         <LineSeries
+          style={{ 'pointer-events': 'none' }}
           data={[
             { x: timestamp + MSEC_DAILY, y: 3 },
             { x: timestamp + MSEC_DAILY * 2, y: 5 },
             { x: timestamp + MSEC_DAILY * 3, y: 15 },
             { x: timestamp + MSEC_DAILY * 4, y: 12 }
           ]} />
+
         <LineSeries
-          data={null} />
-        <LineSeries
+          style={{ 'pointer-events': 'none' }}
           data={[
             { x: timestamp + MSEC_DAILY, y: 10 },
             { x: timestamp + MSEC_DAILY * 2, y: 4 },

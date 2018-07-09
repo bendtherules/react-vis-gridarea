@@ -38,8 +38,7 @@ export default class BasicChartWithGridArea extends React.Component {
             {x: timestamp + MSEC_DAILY * 3, y: 15},
             {x: timestamp + MSEC_DAILY * 4, y: 12}
           ]}/>
-        <LineSeries
-          data={null}/>
+        
         <LineSeries
           data={[
             {x: timestamp + MSEC_DAILY, y: 10},
